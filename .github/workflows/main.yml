@@ -26,7 +26,7 @@ jobs:
 
       - name: Start Ngrok Tunnel (TCP)
         run: |
-          ngrok tcp 8080 # Try a different port
+          ngrok http 80 # You can replace 80 with another port if needed
 
       - name: Display Ngrok Tunnel Info
         run: |
