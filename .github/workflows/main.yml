@@ -26,14 +26,12 @@ jobs:
 
       - name: Start Ngrok Tunnel (TCP)
         run: |
-          ngrok tcp 3389 # This opens a tunnel on port 3389 (you can change the port based on your needs)
+          ngrok tcp 8080 # Try a different port
 
       - name: Display Ngrok Tunnel Info
         run: |
           curl http://localhost:4040/api/tunnels
 
-      - - name: Start Ngrok Tunnel (TCP)
-  run: |
-    ngrok tcp 8080 # Try a different port
+
 
 
