@@ -15,7 +15,6 @@ jobs:
 
       - name: Set up Ngrok
         run: |
-          # Download Ngrok
           curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && \
           echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list && \
           sudo apt update && sudo apt install ngrok
@@ -24,9 +23,9 @@ jobs:
         run: |
           ngrok config add-authtoken ${{ secrets.NGROK_AUTH_TOKEN }}
 
-      - name: Start Ngrok Tunnel (TCP)
+      - name: Start Ngrok Tunnel (HTTP)
         run: |
-          ngrok tcp 3389 # This opens a tunnel on port 3389 (you can change the port based on your needs)
+          ngrok http 80 --log=stdout
 
       - name: Display Ngrok Tunnel Info
         run: |
